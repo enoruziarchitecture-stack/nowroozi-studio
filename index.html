@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>استودیو معماری الهام نوروزی | Elham Nowroozi Architecture Studio</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary-color: #d96b4a;
+      --bg-color: #0c0e12;
+      --font-fa: 'Vazirmatn', sans-serif;
+      --font-en: 'Cinzel', serif;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: #f3f4f6;
+      font-family: var(--font-fa);
+      overflow-x: hidden;
+    }
+    body[dir="ltr"] {
+      font-family: var(--font-en);
+    }
+    .theme-color { color: var(--primary-color) !important; }
+    .theme-bg { background-color: var(--primary-color) !important; }
+    .theme-border { border-color: var(--primary-color) !important; }
+    .glass-nav { background: rgba(12, 14, 18, 0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .active-tab { background-color: var(--primary-color) !important; color: #ffffff !important; border-color: var(--primary-color) !important; }
+  </style>
+</head>
+<body>
+
+  <!-- هدر -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 border theme-border flex items-center justify-center text-xl font-bold theme-color tracking-wider">EN</div>
+        <div>
+          <span class="block text-sm tracking-widest uppercase text-gray-200">Elham Nowroozi</span>
+          <span class="block text-[10px] text-gray-400 tracking-wider">ARCHITECTURE STUDIO</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+        <a href="#hero" class="hover:text-gray-100 transition" data-fa="خانه" data-en="Home">خانه</a>
+        <a href="#services" class="hover:text-gray-100 transition" data-fa="خدمات" data-en="Services">خدمات</a>
+        <a href="#portfolio" class="hover:text-gray-100 transition" data-fa="نمونه‌کارها" data-en="Portfolio">نمونه‌کارها</a>
+        <a href="#about" class="hover:text-gray-100 transition" data-fa="درباره ما" data-en="About">درباره ما</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="langToggle" class="text-xs px-3 py-1.5 rounded-full border border-white/20 text-gray-300 transition">EN | فارسی</button>
+        <a href="admin.html" class="text-xs text-gray-400 border border-white/10 px-3 py-1.5 rounded-md transition hover:border-white/40">پنل مدیریت</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- هیرو -->
+  <section id="hero" class="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+      <div class="lg:col-span-5 space-y-6 z-10 text-right">
+        <div class="inline-block border-r-2 theme-border pr-3">
+          <span class="text-xs tracking-widest theme-color font-semibold uppercase">INNOVATION & GEOMETRY</span>
+        </div>
+        <h1 id="heroTitle" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white"></h1>
+        <p id="heroDesc" class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-md"></p>
+        <div class="flex items-center gap-4 pt-4">
+          <a href="#portfolio" class="px-7 py-3 theme-bg text-white rounded-md text-sm font-semibold transition hover:opacity-90 shadow-lg">مشاهده پروژه‌ها</a>
+        </div>
+      </div>
+      <div class="lg:col-span-7 relative">
+        <div class="relative rounded-xl overflow-hidden border border-white/10 p-2 bg-gradient-to-tr from-white/5 via-transparent to-transparent">
+          <img id="heroImg" src="" alt="Modern Villa" class="rounded-lg w-full h-[460px] object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- خدمات ۵ گانه -->
+  <section id="services" class="py-20 border-t border-white/5 bg-black/20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest theme-color font-bold">MY SERVICES</span>
+        <h2 class="text-3xl font-bold mt-2 text-white">خدمات و حوزه‌های تخصصی</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="categoryCards">
+        <button onclick="filterCategory('plan', this)" class="category-btn active-tab p-3 rounded-lg border border-white/10 text-center transition flex flex-col items-center gap-2 overflow-hidden">
+          <img id="cardImgPlan" src="" class="w-full h-24 object-cover rounded mb-1" />
+          <span class="text-sm font-semibold">طراحی پلان</span>
+        </button>
+        <button onclick="filterCategory('facade', this)" class="category-btn bg-white/5 p-3 rounded-lg border border-white/10 text-center transition flex flex-col items-center gap-2 overflow-hidden">
+          <img id="cardImgFacade" src="" class="w-full h-24 object-cover rounded mb-1" />
+          <span class="text-sm font-semibold">طراحی نما</span>
+        </button>
+        <button onclick="filterCategory('interior', this)" class="category-btn bg-white/5 p-3 rounded-lg border border-white/10 text-center transition flex flex-col items-center gap-2 overflow-hidden">
+          <img id="cardImgInterior" src="" class="w-full h-24 object-cover rounded mb-1" />
+          <span class="text-sm font-semibold">طراحی داخلی</span>
+        </button>
+        <button onclick="filterCategory('bim', this)" class="category-btn bg-white/5 p-3 rounded-lg border border-white/10 text-center transition flex flex-col items-center gap-2 overflow-hidden">
+          <img id="cardImgBim" src="" class="w-full h-24 object-cover rounded mb-1" />
+          <span class="text-sm font-semibold">مدلسازی BIM</span>
+        </button>
+        <button onclick="filterCategory('landscape', this)" class="category-btn bg-white/5 p-3 rounded-lg border border-white/10 text-center transition flex flex-col items-center gap-2 overflow-hidden">
+          <img id="cardImgLandscape" src="" class="w-full h-24 object-cover rounded mb-1" />
+          <span class="text-sm font-semibold">طراحی محوطه</span>
+        </button>
+      </div>
+
+      <div id="portfolio" class="mt-16">
+        <div class="flex items-center justify-between mb-8">
+          <h3 id="currentCategoryTitle" class="text-xl font-bold text-white border-r-4 theme-border pr-3">پروژه‌های طراحی پلان</h3>
+          <span id="projectCount" class="text-xs text-gray-400"></span>
+        </div>
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- درباره من -->
+  <section id="about" class="py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5">
+        <div class="border-2 border-white/20 p-2 rounded-xl">
+          <img id="aboutImg" src="" alt="Elham Nowroozi" class="rounded-lg w-full h-[450px] object-cover" />
+        </div>
+      </div>
+      <div class="lg:col-span-7 space-y-6">
+        <span class="text-xs tracking-widest theme-color font-bold">ABOUT ME</span>
+        <h2 class="text-3xl font-bold text-white">درباره الهام نوروزی</h2>
+        <p id="aboutBio" class="text-gray-300 text-sm leading-relaxed"></p>
+        <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 text-center">
+          <div>
+            <span id="statExp" class="block text-3xl font-bold theme-color"></span>
+            <span class="text-xs text-gray-400">سال تجربه کاری</span>
+          </div>
+          <div>
+            <span id="statProj" class="block text-3xl font-bold theme-color"></span>
+            <span class="text-xs text-gray-400">پروژه موفق</span>
+          </div>
+          <div>
+            <span class="block text-3xl font-bold theme-color">۱۰۰٪</span>
+            <span class="text-xs text-gray-400">رضایت کارفرما</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let currentLang = 'fa';
+    let currentCategory = 'plan';
+
+    function applySavedStyles() {
+      const fonts = JSON.parse(localStorage.getItem('en_site_fonts'));
+      if (fonts) {
+        document.documentElement.style.setProperty('--font-fa', fonts.fontFa);
+        document.documentElement.style.setProperty('--font-en', fonts.fontEn);
+      }
+      const colors = JSON.parse(localStorage.getItem('en_theme_colors'));
+      if (colors) {
+        document.documentElement.style.setProperty('--primary-color', colors.primary);
+        document.documentElement.style.setProperty('--bg-color', colors.bg);
+      }
+    }
+    applySavedStyles();
+
+    function loadContent() {
+      applySavedStyles();
+
+      const hero = JSON.parse(localStorage.getItem('en_hero_data')) || {
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+        titleFa: 'معماری، فراتر از فضاها',
+        titleEn: 'Architecture, Beyond Spaces',
+        descFa: 'طراحی فضاهایی هماهنگ با سبک زندگی و رویاهای شما، با رویکرد مدرن و استفاده از ترکیب اصیل متریال‌های پایدار.',
+        descEn: 'Designing spaces that align with your lifestyle and dreams, combining pure modern forms and timeless materials.'
+      };
+      document.getElementById('heroImg').src = hero.img;
+      document.getElementById('heroTitle').innerText = currentLang === 'fa' ? hero.titleFa : hero.titleEn;
+      document.getElementById('heroDesc').innerText = currentLang === 'fa' ? hero.descFa : hero.descEn;
+
+      const srvImgs = JSON.parse(localStorage.getItem('en_service_imgs')) || {
+        plan: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80',
+        facade: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80',
+        interior: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80',
+        bim: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80',
+        landscape: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80'
+      };
+      document.getElementById('cardImgPlan').src = srvImgs.plan;
+      document.getElementById('cardImgFacade').src = srvImgs.facade;
+      document.getElementById('cardImgInterior').src = srvImgs.interior;
+      document.getElementById('cardImgBim').src = srvImgs.bim;
+      document.getElementById('cardImgLandscape').src = srvImgs.landscape;
+
+      const about = JSON.parse(localStorage.getItem('en_about_data')) || {
+        img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+        bioFa: 'معمار و طراح با بیش از ۱۵ سال سابقه حرفه‌ای در طراحی و اجرای پروژه‌های لوکس ویلایی، مسکونی و اداری.',
+        bioEn: 'Architect with over 15 years of experience specializing in high-end residential and commercial architecture.',
+        exp: '+۱۵',
+        proj: '+۸۰'
+      };
+      document.getElementById('aboutImg').src = about.img;
+      document.getElementById('aboutBio').innerText = currentLang === 'fa' ? about.bioFa : about.bioEn;
+      document.getElementById('statExp').innerText = about.exp;
+      document.getElementById('statProj').innerText = about.proj;
+    }
+
+    function renderProjects() {
+      const projects = JSON.parse(localStorage.getItem('en_projects')) || [];
+      const filtered = projects.filter(p => p.category === currentCategory);
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+      document.getElementById('projectCount').innerText = `${filtered.length} مورد`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-500">پروژه‌ای در این دسته ثبت نشده است.</div>`;
+        return;
+      }
+
+      filtered.forEach(p => {
+        grid.innerHTML += `
+          <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden group hover:border-white/30 transition duration-300">
+            <div class="h-56 overflow-hidden relative">
+              <img src="${p.img}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            </div>
+            <div class="p-5">
+              <h4 class="text-base font-bold text-white mb-2">${currentLang === 'fa' ? p.title_fa : p.title_en}</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">${currentLang === 'fa' ? p.desc_fa : p.desc_en}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function filterCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(b => {
+        b.classList.remove('active-tab');
+        b.classList.add('bg-white/5');
+      });
+      btn.classList.add('active-tab');
+      btn.classList.remove('bg-white/5');
+      const titles = { plan: 'پروژه‌های طراحی پلان', facade: 'پروژه‌های طراحی نما', interior: 'پروژه‌های طراحی داخلی', bim: 'پروژه‌های مدلسازی BIM', landscape: 'پروژه‌های طراحی محوطه' };
+      document.getElementById('currentCategoryTitle').innerText = titles[cat];
+      renderProjects();
+    }
+
+    document.getElementById('langToggle').addEventListener('click', () => {
+      currentLang = currentLang === 'fa' ? 'en' : 'fa';
+      document.documentElement.setAttribute('dir', currentLang === 'fa' ? 'rtl' : 'ltr');
+      loadContent();
+      renderProjects();
+    });
+
+    loadContent();
+    renderProjects();
+  </script>
+</body>
+</html>

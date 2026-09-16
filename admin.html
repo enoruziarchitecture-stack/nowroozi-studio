@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پنل مدیریت استودیو معماری الهام نوروزی</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0c0e12; color: #f3f4f6; font-family: 'Vazirmatn', Tahoma, sans-serif; }
+    .file-drop-zone { border: 2px dashed rgba(255, 255, 255, 0.15); transition: all 0.3s ease; }
+    .file-drop-zone:hover { border-color: #d96b4a; }
+  </style>
+</head>
+<body class="p-6 md:p-12">
+  <div class="max-w-5xl mx-auto space-y-10">
+
+    <!-- هدر پنل -->
+    <div class="flex items-center justify-between pb-6 border-b border-white/10">
+      <div>
+        <h1 class="text-2xl font-bold text-white">مدیریت جامع محتوا، آپلود تصاویر و تنظیمات</h1>
+        <p class="text-xs text-gray-400 mt-1">آپلود مستقیم فایل‌های عکس از سیستم، تنظیم فونت‌ها، رنگ‌ها و ویرایش متون</p>
+      </div>
+      <a href="index.html" class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 rounded-md text-xs text-gray-300 transition">
+        ← مشاهده سایت اصلی
+      </a>
+    </div>
+
+    <!-- بخش فونت‌ها -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2"><span>🖋️</span> انتخاب و تغییر فونت سایت</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-[#161a22] p-4 rounded-lg border border-white/10">
+          <label class="block text-xs font-bold text-white mb-2">فونت متون فارسی</label>
+          <select id="fontFaSelect" class="w-full bg-black/40 border border-white/20 text-xs p-2.5 rounded text-white">
+            <option value="'Vazirmatn', sans-serif">وزیرمتن (Vazirmatn) - مدرن و خوانا</option>
+            <option value="'Sahel', sans-serif">ساحل (Sahel) - هندسی و متوازن</option>
+            <option value="'Shabnam', sans-serif">شبنم (Shabnam) - مینیمال و تمیز</option>
+            <option value="'Samim', sans-serif">صمیم (Samim) - نرم و چشم‌نواز</option>
+            <option value="Tahoma, sans-serif">تاهوما (Tahoma) - استاندارد سیستم</option>
+          </select>
+        </div>
+
+        <div class="bg-[#161a22] p-4 rounded-lg border border-white/10">
+          <label class="block text-xs font-bold text-white mb-2">فونت متون انگلیسی (English Font)</label>
+          <select id="fontEnSelect" class="w-full bg-black/40 border border-white/20 text-xs p-2.5 rounded text-white">
+            <option value="'Cinzel', serif">Cinzel - کلاسیک و معمارگونه لوکس</option>
+            <option value="'Montserrat', sans-serif">Montserrat - ژئومتریک و مدرن</option>
+            <option value="'Syncopate', sans-serif">Syncopate - حروف عریض و آوانگارد</option>
+            <option value="'Playfair Display', serif">Playfair Display - پرستیژ و ظرافت</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="saveFonts()" class="mt-4 px-6 py-2 bg-[#d96b4a] hover:opacity-90 text-white font-semibold rounded text-xs transition">
+        ذخیره و اعمال فونت‌ها
+      </button>
+    </div>
+
+    <!-- پالت رنگ -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><span>🎨</span> پالت رنگی سایت</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-[#161a22] p-4 rounded-lg border border-white/10 flex items-center justify-between">
+          <div>
+            <label class="block text-xs font-bold text-white mb-1">رنگ شاخص و دکمه‌ها</label>
+            <span class="text-[11px] text-gray-400">پیش‌فرض: #d96b4a</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="text" id="hexPrimary" class="w-24 bg-black/40 border border-white/20 text-xs px-2 py-1.5 rounded text-center font-mono uppercase text-white" />
+            <input type="color" id="pickerPrimary" class="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+          </div>
+        </div>
+        <div class="bg-[#161a22] p-4 rounded-lg border border-white/10 flex items-center justify-between">
+          <div>
+            <label class="block text-xs font-bold text-white mb-1">رنگ پس‌زمینه مخملی</label>
+            <span class="text-[11px] text-gray-400">پیش‌فرض: #0c0e12</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="text" id="hexBg" class="w-24 bg-black/40 border border-white/20 text-xs px-2 py-1.5 rounded text-center font-mono uppercase text-white" />
+            <input type="color" id="pickerBg" class="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+          </div>
+        </div>
+      </div>
+      <button onclick="saveColors()" class="mt-4 px-6 py-2 bg-[#d96b4a] hover:opacity-90 text-white font-semibold rounded text-xs transition">
+        ذخیره رنگ‌ها
+      </button>
+    </div>
+
+    <!-- بخش هیرو (با آپلود مستقیم عکس) -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><span>🖼️</span> بخش هیرو (آپلود مستقیم عکس ویلا)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="md:col-span-2">
+          <label class="block text-xs text-gray-300 mb-2">انتخاب و آپلود عکس ویلای هیرو از سیستم</label>
+          <div class="flex items-center gap-4 bg-[#161a22] p-4 rounded-lg border border-white/10">
+            <img id="heroImgPreview" class="w-24 h-16 rounded object-cover border border-white/20 bg-black/50" />
+            <input type="file" id="heroFileInput" accept="image/*" class="text-xs text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#d96b4a] file:text-white hover:file:opacity-90 cursor-pointer" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">تیتر فارسی هیرو</label>
+          <input type="text" id="heroTitleFa" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">تیتر انگلیسی هیرو</label>
+          <input type="text" id="heroTitleEn" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">متن توضیحی فارسی هیرو</label>
+          <textarea id="heroDescFa" rows="3" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">متن توضیحی انگلیسی هیرو</label>
+          <textarea id="heroDescEn" rows="3" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200"></textarea>
+        </div>
+      </div>
+      <button onclick="saveHeroData()" class="mt-4 px-6 py-2 bg-[#d96b4a] hover:opacity-90 text-white font-semibold rounded text-xs transition">
+        ذخیره تنظیمات هیرو
+      </button>
+    </div>
+
+    <!-- تصاویر ۵ کارت خدمات (با دکمه آپلود مستقیم فایل) -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><span>📂</span> آپلود مستقیم تصاویر ۵ کارت خدمات اصلی</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+        <div class="bg-[#161a22] p-3 rounded-lg border border-white/10 space-y-2">
+          <span class="font-bold text-white block">طراحی پلان</span>
+          <img id="prevPlan" class="w-full h-24 object-cover rounded bg-black/40" />
+          <input type="file" id="filePlan" accept="image/*" class="w-full text-[11px] text-gray-400 file:py-1 file:px-2 file:rounded file:bg-white/10 file:text-white file:border-0" />
+        </div>
+        <div class="bg-[#161a22] p-3 rounded-lg border border-white/10 space-y-2">
+          <span class="font-bold text-white block">طراحی نما</span>
+          <img id="prevFacade" class="w-full h-24 object-cover rounded bg-black/40" />
+          <input type="file" id="fileFacade" accept="image/*" class="w-full text-[11px] text-gray-400 file:py-1 file:px-2 file:rounded file:bg-white/10 file:text-white file:border-0" />
+        </div>
+        <div class="bg-[#161a22] p-3 rounded-lg border border-white/10 space-y-2">
+          <span class="font-bold text-white block">طراحی داخلی</span>
+          <img id="prevInterior" class="w-full h-24 object-cover rounded bg-black/40" />
+          <input type="file" id="fileInterior" accept="image/*" class="w-full text-[11px] text-gray-400 file:py-1 file:px-2 file:rounded file:bg-white/10 file:text-white file:border-0" />
+        </div>
+        <div class="bg-[#161a22] p-3 rounded-lg border border-white/10 space-y-2">
+          <span class="font-bold text-white block">مدلسازی BIM</span>
+          <img id="prevBim" class="w-full h-24 object-cover rounded bg-black/40" />
+          <input type="file" id="fileBim" accept="image/*" class="w-full text-[11px] text-gray-400 file:py-1 file:px-2 file:rounded file:bg-white/10 file:text-white file:border-0" />
+        </div>
+        <div class="bg-[#161a22] p-3 rounded-lg border border-white/10 space-y-2">
+          <span class="font-bold text-white block">طراحی محوطه</span>
+          <img id="prevLandscape" class="w-full h-24 object-cover rounded bg-black/40" />
+          <input type="file" id="fileLandscape" accept="image/*" class="w-full text-[11px] text-gray-400 file:py-1 file:px-2 file:rounded file:bg-white/10 file:text-white file:border-0" />
+        </div>
+      </div>
+      <button onclick="saveServicesImages()" class="mt-4 px-6 py-2 bg-[#d96b4a] hover:opacity-90 text-white font-semibold rounded text-xs transition">
+        ذخیره تصاویر ۵ خدمت
+      </button>
+    </div>
+
+    <!-- بخش درباره من (با آپلود مستقیم عکس) -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2"><span>👤</span> بخش درباره من (آپلود عکس پرتره یا دفتر)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="md:col-span-2">
+          <label class="block text-xs text-gray-300 mb-2">انتخاب و آپلود عکس پرتره / آتلیه</label>
+          <div class="flex items-center gap-4 bg-[#161a22] p-4 rounded-lg border border-white/10">
+            <img id="aboutImgPreview" class="w-20 h-20 rounded-full object-cover border border-white/20 bg-black/50" />
+            <input type="file" id="aboutFileInput" accept="image/*" class="text-xs text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-[#d96b4a] file:text-white hover:file:opacity-90 cursor-pointer" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">متن بیوگرافی فارسی</label>
+          <textarea id="aboutBioFa" rows="3" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">متن بیوگرافی انگلیسی</label>
+          <textarea id="aboutBioEn" rows="3" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">تعداد سال سابقه</label>
+          <input type="text" id="aboutExp" class="w-full bg-[#161a22] border border-white/10 rounded p-2 text-gray-200" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">تعداد پروژه‌ها</label>
+          <input type="text" id="aboutProj" class="w-full bg-[#161a22] border border-white/10 rounded p-2 text-gray-200" />
+        </div>
+      </div>
+      <button onclick="saveAboutData()" class="mt-4 px-6 py-2 bg-[#d96b4a] hover:opacity-90 text-white font-semibold rounded text-xs transition">
+        ذخیره اطلاعات درباره من
+      </button>
+    </div>
+
+    <!-- فرم افزودن نمونه‌کار به زیرمجموعه‌ها (با آپلود مستقیم فایل) -->
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-white mb-4">افزودن نمونه‌کار جدید به زیرمجموعه‌ها</h2>
+      <form id="addProjectForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">زیرمجموعه مربوطه</label>
+          <select id="projCategory" class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200">
+            <option value="plan">طراحی پلان (Floor Plan)</option>
+            <option value="facade">طراحی نما (Facade)</option>
+            <option value="interior">طراحی داخلی (Interior)</option>
+            <option value="bim">مدلسازی BIM</option>
+            <option value="landscape">طراحی محوطه (Landscape)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">آپلود مستقیم عکس پروژه از کامپیوتر یا گوشی</label>
+          <div class="flex items-center gap-3 bg-[#161a22] p-2 rounded border border-white/10">
+            <img id="projImgPreview" class="w-12 h-10 rounded object-cover bg-black/40 hidden" />
+            <input type="file" id="projFileInput" accept="image/*" required class="text-xs text-gray-300 file:py-1 file:px-3 file:rounded file:bg-[#d96b4a] file:text-white file:border-0 cursor-pointer" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">عنوان فارسی</label>
+          <input type="text" id="projTitleFa" required class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-300 mb-1">عنوان انگلیسی</label>
+          <input type="text" id="projTitleEn" required class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-xs text-gray-300 mb-1">توضیحات فارسی</label>
+          <textarea id="projDescFa" rows="2" required class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200"></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-xs text-gray-300 mb-1">توضیحات انگلیسی</label>
+          <textarea id="projDescEn" rows="2" required class="w-full bg-[#161a22] border border-white/10 rounded p-2.5 text-gray-200"></textarea>
+        </div>
+        <div class="md:col-span-2 text-left">
+          <button type="submit" class="px-6 py-2.5 bg-[#d96b4a] hover:opacity-90 text-white font-semibold rounded transition text-xs">
+            + ذخیره و انتشار مستقیم در زیرمجموعه
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- لیست پروژه‌های فعال -->
+    <div>
+      <h2 class="text-lg font-bold text-white mb-4">لیست پروژه‌های فعال روی سایت</h2>
+      <div id="adminProjectList" class="space-y-3"></div>
+    </div>
+  </div>
+
+  <script>
+    // تابع کمکی تبدیل فایل تصویر به رشته قابل ذخیره (Base64) با بهینه‌سازی
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    }
+
+    // متغیرهای ذخیره موقت تصاویر آپلود شده
+    let heroImgData = '';
+    let aboutImgData = '';
+    let serviceImgsData = {};
+    let projImgData = '';
+
+    // گوش دادن به آپلود هیرو
+    document.getElementById('heroFileInput').addEventListener('change', async (e) => {
+      if (e.target.files[0]) {
+        heroImgData = await fileToBase64(e.target.files[0]);
+        document.getElementById('heroImgPreview').src = heroImgData;
+      }
+    });
+
+    // گوش دادن به آپلود درباره من
+    document.getElementById('aboutFileInput').addEventListener('change', async (e) => {
+      if (e.target.files[0]) {
+        aboutImgData = await fileToBase64(e.target.files[0]);
+        document.getElementById('aboutImgPreview').src = aboutImgData;
+      }
+    });
+
+    // گوش دادن به ۵ عکس خدمات
+    ['Plan', 'Facade', 'Interior', 'Bim', 'Landscape'].forEach(name => {
+      const key = name.toLowerCase();
+      document.getElementById('file' + name).addEventListener('change', async (e) => {
+        if (e.target.files[0]) {
+          const b64 = await fileToBase64(e.target.files[0]);
+          serviceImgsData[key] = b64;
+          document.getElementById('prev' + name).src = b64;
+        }
+      });
+    });
+
+    // گوش دادن به عکس نمونه‌کار جدید
+    document.getElementById('projFileInput').addEventListener('change', async (e) => {
+      if (e.target.files[0]) {
+        projImgData = await fileToBase64(e.target.files[0]);
+        const prev = document.getElementById('projImgPreview');
+        prev.src = projImgData;
+        prev.classList.remove('hidden');
+      }
+    });
+
+    // همگام‌سازی انتخابگرهای رنگ
+    const hexPrimary = document.getElementById('hexPrimary');
+    const pickerPrimary = document.getElementById('pickerPrimary');
+    const hexBg = document.getElementById('hexBg');
+    const pickerBg = document.getElementById('pickerBg');
+    pickerPrimary.addEventListener('input', () => hexPrimary.value = pickerPrimary.value);
+    hexPrimary.addEventListener('input', () => pickerPrimary.value = hexPrimary.value);
+    pickerBg.addEventListener('input', () => hexBg.value = pickerBg.value);
+    hexBg.addEventListener('input', () => pickerBg.value = hexBg.value);
+
+    function initData() {
+      // فونت‌ها
+      const fonts = JSON.parse(localStorage.getItem('en_site_fonts')) || { fontFa: "'Vazirmatn', sans-serif", fontEn: "'Cinzel', serif" };
+      document.getElementById('fontFaSelect').value = fonts.fontFa;
+      document.getElementById('fontEnSelect').value = fonts.fontEn;
+
+      // رنگ‌ها
+      const colors = JSON.parse(localStorage.getItem('en_theme_colors')) || { primary: '#d96b4a', bg: '#0c0e12' };
+      hexPrimary.value = colors.primary;
+      pickerPrimary.value = colors.primary;
+      hexBg.value = colors.bg;
+      pickerBg.value = colors.bg;
+
+      // هیرو
+      const hero = JSON.parse(localStorage.getItem('en_hero_data')) || {
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+        titleFa: 'معماری، فراتر از فضاها',
+        titleEn: 'Architecture, Beyond Spaces',
+        descFa: 'طراحی فضاهایی هماهنگ با سبک زندگی و رویاهای شما، با رویکرد مدرن و استفاده از ترکیب اصیل متریال‌های پایدار.',
+        descEn: 'Designing spaces that align with your lifestyle and dreams, combining pure modern forms and timeless materials.'
+      };
+      heroImgData = hero.img;
+      document.getElementById('heroImgPreview').src = hero.img;
+      document.getElementById('heroTitleFa').value = hero.titleFa;
+      document.getElementById('heroTitleEn').value = hero.titleEn;
+      document.getElementById('heroDescFa').value = hero.descFa;
+      document.getElementById('heroDescEn').value = hero.descEn;
+
+      // ۵ خدمت
+      const srvImgs = JSON.parse(localStorage.getItem('en_service_imgs')) || {
+        plan: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80',
+        facade: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80',
+        interior: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80',
+        bim: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80',
+        landscape: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80'
+      };
+      serviceImgsData = srvImgs;
+      document.getElementById('prevPlan').src = srvImgs.plan;
+      document.getElementById('prevFacade').src = srvImgs.facade;
+      document.getElementById('prevInterior').src = srvImgs.interior;
+      document.getElementById('prevBim').src = srvImgs.bim;
+      document.getElementById('prevLandscape').src = srvImgs.landscape;
+
+      // درباره من
+      const about = JSON.parse(localStorage.getItem('en_about_data')) || {
+        img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+        bioFa: 'معمار و طراح با بیش از ۱۵ سال سابقه حرفه‌ای در طراحی و اجرای پروژه‌های لوکس ویلایی، مسکونی و اداری.',
+        bioEn: 'Architect with over 15 years of experience specializing in high-end residential and commercial architecture.',
+        exp: '+۱۵',
+        proj: '+۸۰'
+      };
+      aboutImgData = about.img;
+      document.getElementById('aboutImgPreview').src = about.img;
+      document.getElementById('aboutBioFa').value = about.bioFa;
+      document.getElementById('aboutBioEn').value = about.bioEn;
+      document.getElementById('aboutExp').value = about.exp;
+      document.getElementById('aboutProj').value = about.proj;
+    }
+
+    function saveFonts() {
+      localStorage.setItem('en_site_fonts', JSON.stringify({
+        fontFa: document.getElementById('fontFaSelect').value,
+        fontEn: document.getElementById('fontEnSelect').value
+      }));
+      alert('فونت‌ها با موفقیت اعمال شدند.');
+    }
+
+    function saveColors() {
+      localStorage.setItem('en_theme_colors', JSON.stringify({ primary: hexPrimary.value, bg: hexBg.value }));
+      alert('رنگ‌ها با موفقیت ذخیره شدند.');
+    }
+
+    function saveHeroData() {
+      localStorage.setItem('en_hero_data', JSON.stringify({
+        img: heroImgData,
+        titleFa: document.getElementById('heroTitleFa').value,
+        titleEn: document.getElementById('heroTitleEn').value,
+        descFa: document.getElementById('heroDescFa').value,
+        descEn: document.getElementById('heroDescEn').value
+      }));
+      alert('عکس و متن‌های هیرو ذخیره شدند.');
+    }
+
+    function saveServicesImages() {
+      localStorage.setItem('en_service_imgs', JSON.stringify(serviceImgsData));
+      alert('تصاویر آپلود شده ۵ خدمت با موفقیت ذخیره شدند.');
+    }
+
+    function saveAboutData() {
+      localStorage.setItem('en_about_data', JSON.stringify({
+        img: aboutImgData,
+        bioFa: document.getElementById('aboutBioFa').value,
+        bioEn: document.getElementById('aboutBioEn').value,
+        exp: document.getElementById('aboutExp').value,
+        proj: document.getElementById('aboutProj').value
+      }));
+      alert('عکس و مشخصات درباره من ذخیره شد.');
+    }
+
+    function loadAdminProjects() {
+      const list = document.getElementById('adminProjectList');
+      const projects = JSON.parse(localStorage.getItem('en_projects')) || [];
+      list.innerHTML = '';
+      if (projects.length === 0) {
+        list.innerHTML = '<p class="text-xs text-gray-500">پروژه‌ای ثبت نشده است.</p>';
+        return;
+      }
+      projects.forEach((p) => {
+        list.innerHTML += `
+          <div class="bg-white/5 border border-white/10 p-4 rounded-lg flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <img src="${p.img}" class="w-16 h-12 rounded object-cover border border-white/10" />
+              <div>
+                <h4 class="text-sm font-bold text-white">${p.title_fa} <span class="text-xs font-normal text-gray-400">(${p.title_en})</span></h4>
+                <span class="inline-block text-[11px] text-[#d96b4a] bg-white/5 px-2 py-0.5 rounded mt-1">دسته: ${p.category}</span>
+              </div>
+            </div>
+            <button onclick="deleteProject(${p.id})" class="text-xs text-red-400 hover:text-red-300 border border-red-500/20 px-3 py-1.5 rounded transition">حذف</button>
+          </div>
+        `;
+      });
+    }
+
+    document.getElementById('addProjectForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!projImgData) {
+        alert('لطفاً ابتدا عکس پروژه را انتخاب کنید.');
+        return;
+      }
+      const projects = JSON.parse(localStorage.getItem('en_projects')) || [];
+      projects.unshift({
+        id: Date.now(),
+        category: document.getElementById('projCategory').value,
+        img: projImgData,
+        title_fa: document.getElementById('projTitleFa').value,
+        title_en: document.getElementById('projTitleEn').value,
+        desc_fa: document.getElementById('projDescFa').value,
+        desc_en: document.getElementById('projDescEn').value
+      });
+      localStorage.setItem('en_projects', JSON.stringify(projects));
+      document.getElementById('addProjectForm').reset();
+      projImgData = '';
+      document.getElementById('projImgPreview').classList.add('hidden');
+      loadAdminProjects();
+      alert('پروژه همراه با عکس آپلودشده منتشر شد!');
+    });
+
+    function deleteProject(id) {
+      if (confirm('آیا از حذف این پروژه مطمئن هستید؟')) {
+        let projects = JSON.parse(localStorage.getItem('en_projects')) || [];
+        projects = projects.filter(p => p.id !== id);
+        localStorage.setItem('en_projects', JSON.stringify(projects));
+        loadAdminProjects();
+      }
+    }
+
+    initData();
+    loadAdminProjects();
+  </script>
+</body>
+</html>
